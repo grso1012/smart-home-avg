@@ -1,0 +1,38 @@
+
+services:
+  mqtt-broker:
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    networks:
+      - smart-home-network
+
+  sensor-service:
+    build: ./sensor-service
+    depends_on:
+      - mqtt-broker
+    environment:
+      - MQTT_BROKER_URL=mqtt://mqtt-broker:1883
+    command: sh -c "sleep 10 && npm run start"
+    networks:
+      - smart-home-network
+
+    
+
+  thermostat-service:
+    build: ./thermostat-service
+    depends_on:
+      - mqtt-broker
+    environment:
+      - MQTT_BROKER_URL=mqtt://mqtt-broker:1883
+    command: sh -c "sleep 5 && npm run start"  
+    networks:
+      - smart-home-network
+
+networks:
+  smart-home-network:
+    driver: bridge
+
