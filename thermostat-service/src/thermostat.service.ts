@@ -6,10 +6,8 @@ export class ThermostatService {
   private readonly minTemp = 18;
   private readonly maxTemp = 24;
 
-  @MessagePattern('temperature')
+  @MessagePattern('house/temperature')
   adjustHeating(@Payload() data: any, @Ctx() context: MqttContext) {
-    console.log(`Received message: ${JSON.stringify(data)}`);
-    
 
     console.log('Subscription erfolgreich. Nachricht erhalten.');
 
