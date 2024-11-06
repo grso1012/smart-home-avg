@@ -29,7 +29,7 @@ export class SensorService {
         temperature: Math.floor(Math.random() * 30) // Zufällige Temperatur
       }))
     ).subscribe(data => {
-      const topic = `home/sensor/temperature/${this.sensorId}`;
+      const topic = `home/sensor/temperature/${data.room}`;
       console.log(`Sende Temperatur für ${data.room}: ${data.temperature}°C an ${topic}`);
       this.client.publish(topic, JSON.stringify(data), (err) => {
         if (err) {

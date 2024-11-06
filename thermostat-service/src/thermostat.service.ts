@@ -10,34 +10,29 @@ export class ThermostatService implements OnModuleInit {
     this.thermostatId = process.env.THERMOSTAT_ID || `thermostat-${Math.floor(Math.random() * 10000)}`;
   }
 
-
   onModuleInit() {
     this.client = mqtt.connect(process.env.MQTT_BROKER_URL || 'mqtt://mqtt-broker:1883');
 
     this.client.on('connect', () => {
       console.log(`Thermostat ${this.thermostatId} erfolgreich mit MQTT-Broker verbunden.`);
-      this.client.subscribe(`home/thermostat/control/${this.thermostatId}`, (err) => {
+      this.client.subscribe(`home/thermostat/control/+`, (err) => {
         if (err) {
-          console.error(`Abonnement auf home/thermostat/control/${this.thermostatId} fehlgeschlagen:`, err);
+          console.error(`Abonnement auf home/thermostat/control/+ fehlgeschlagen:`, err);
         } else {
-          console.log(`Erfolgreich auf home/thermostat/control/${this.thermostatId} abonniert.`);
+          console.log(`Erfolgreich auf home/thermostat/control/+ abonniert.`);
         }
       });
     });
 
-    this.client.on('message', (topic, message) =>{
-        const parsedMessage = JSON.parse(message.toString());
-        this.applyHeatingCommand(parsedMessage.room, parsedMessage.command, parsedMessage.targetTemperature);
+    this.client.on('message', (topic, message) => {
+      const parsedMessage = JSON.parse(message.toString());
+      this.applyHeatingCommand(parsedMessage.room, parsedMessage.command);
     });
   }
 
-  private applyHeatingCommand(room: string, command: string, targetTemperature: number) {
-    console.log(`Empfange Steuerbefehl für ${room}: ${command} bei Zieltemperatur ${targetTemperature}°C`);
+  private applyHeatingCommand(room: string, command: string) {
+    console.log(`Empfange Steuerbefehl für ${room}: ${command}`);
 
-    if (command === 'Heizung_ein') {
-      console.log(`Heizung in ${room} eingeschaltet.`);
-    } else if (command === 'Heizung_aus') {
-      console.log(`Heizung in ${room} ausgeschaltet.`);
-    }
-  }
+    console.log(`Heizung in ${room} ${command === 'Heizung_ein' ? 'eingeschaltet' : 'ausgeschaltet'}.`);
+}
 }
