@@ -26,7 +26,7 @@ export class SensorService {
     interval(5000).pipe(
       map(() => ({
         room: `Raum-${Math.floor(Math.random() * 5) + 1}`, // Zufälliger Raum
-        temperature: this.generateTemperature(20,3) // Zufällige Temperatur mit Mittelwert 20 und Standardabweichung 3
+        temperature: this.generateTemperature(20,7) // Zufällige Temperatur mit Mittelwert 20 und Standardabweichung 3
       }))
     ).subscribe(data => {
       const topic = `home/sensor/temperature/${data.room}`;
