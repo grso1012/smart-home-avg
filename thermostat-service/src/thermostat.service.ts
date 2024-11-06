@@ -4,49 +4,40 @@ import * as mqtt from 'mqtt';
 @Injectable()
 export class ThermostatService implements OnModuleInit {
   private client: mqtt.Client;
-  private readonly minTemp = 18;
-  private readonly maxTemp = 24;
+  private readonly thermostatId: string;
+
+  constructor() {
+    this.thermostatId = process.env.THERMOSTAT_ID || `thermostat-${Math.floor(Math.random() * 10000)}`;
+  }
+
 
   onModuleInit() {
     this.client = mqtt.connect(process.env.MQTT_BROKER_URL || 'mqtt://mqtt-broker:1883');
 
     this.client.on('connect', () => {
-      console.log('Thermostat MQTT-Client erfolgreich verbunden.');
-      this.client.subscribe('house/temperature', (err) => {
+      console.log(`Thermostat ${this.thermostatId} erfolgreich mit MQTT-Broker verbunden.`);
+      this.client.subscribe(`home/thermostat/control/${this.thermostatId}`, (err) => {
         if (err) {
-          console.error('Abonnement auf house/temperature fehlgeschlagen:', err);
+          console.error(`Abonnement auf home/thermostat/control/${this.thermostatId} fehlgeschlagen:`, err);
         } else {
-          console.log('Erfolgreich auf house/temperature abonniert.');
+          console.log(`Erfolgreich auf home/thermostat/control/${this.thermostatId} abonniert.`);
         }
       });
     });
 
-    this.client.on('message', (topic, message) => {
-      if (topic === 'house/temperature') {
+    this.client.on('message', (topic, message) =>{
         const parsedMessage = JSON.parse(message.toString());
-        console.log('Empfangene Nachricht:', parsedMessage); 
-        this.adjustHeating(parsedMessage);
-      }
+        this.applyHeatingCommand(parsedMessage.room, parsedMessage.command, parsedMessage.targetTemperature);
     });
   }
 
-  private adjustHeating(data: any) {
-    console.log('Nachricht erfolgreich empfangen.');
+  private applyHeatingCommand(room: string, command: string, targetTemperature: number) {
+    console.log(`Empfange Steuerbefehl für ${room}: ${command} bei Zieltemperatur ${targetTemperature}°C`);
 
-    const temperature = data?.data?.data?.temperature;
-    console.log(`Empfangene Temperatur: ${temperature !== undefined ? temperature + '°C' : 'undefined'}`);
-
-    if (temperature === undefined) {
-      console.error('Fehler: Temperaturwert nicht gefunden. Bitte Struktur des gesendeten Payload überprüfen.');
-      return;
-    }
-
-    if (temperature < this.minTemp) {
-      console.log('Temperatur zu niedrig. Heizung hochdrehen.');
-    } else if (temperature > this.maxTemp) {
-      console.log('Temperatur zu hoch. Heizung runterdrehen.');
-    } else {
-      console.log('Temperatur im optimalen Bereich.');
+    if (command === 'Heizung_ein') {
+      console.log(`Heizung in ${room} eingeschaltet.`);
+    } else if (command === 'Heizung_aus') {
+      console.log(`Heizung in ${room} ausgeschaltet.`);
     }
   }
 }

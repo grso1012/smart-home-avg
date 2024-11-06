@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "declaration": true,
+      "removeComments": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "strictPropertyInitialization": false,
+      "esModuleInterop": true,
+      "noImplicitAny": false,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "sourceMap": true,
+      "target": "es2017",
+      "lib": ["es2017", "dom"],
+      "baseUrl": "./",
+      "paths": {
+        "*": ["node_modules/*"]
+      }
+    }
+  }
+  
