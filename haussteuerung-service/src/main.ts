@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { HaussteuerungService } from './haussteuerung.service'; 
+import { HaussteuerungService } from './haussteuerung.service';
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);

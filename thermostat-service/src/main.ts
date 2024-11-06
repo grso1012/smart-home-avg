@@ -7,14 +7,12 @@ async function bootstrap() {
 
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
     transport: Transport.MQTT,
-    options: { 
-        url: process.env.MQTT_BROKER_URL || 'mqtt://mqtt-broker:1883',
-        
-     },
+    options: {
+      url: process.env.MQTT_BROKER_URL || 'mqtt://mqtt-broker:1883',
+    },
   });
 
   await app.listen();
   console.log('Thermostat-Service mit MQTT-Broker verbunden.');
 }
 bootstrap();
-

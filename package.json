@@ -1,15 +1,14 @@
 {
   "scripts": {
     "start": "ts-node src/main.ts"
-    
   },
-
   "dependencies": {
     "@nestjs/core": "^10.4.6",
     "@nestjs/microservices": "^10.4.6",
     "mqtt": "^5.10.1"
   },
   "devDependencies": {
+    "prettier": "^3.3.3",
     "ts-node": "^10.9.2"
   }
 }
