@@ -1,0 +1,15 @@
+2024-11-07 14:39:11 [INFO]: Sensor sensor-9574 erfolgreich mit MQTT-Broker verbunden
+2024-11-07 14:39:21 [INFO]: Temperatur gesendet: {"room":"Raum-2","temperature":4} an home/sensor/temperature/Raum-2
+2024-11-07 14:39:31 [INFO]: Temperatur gesendet: {"room":"Raum-1","temperature":21} an home/sensor/temperature/Raum-1
+2024-11-07 14:39:41 [INFO]: Temperatur gesendet: {"room":"Raum-4","temperature":22} an home/sensor/temperature/Raum-4
+2024-11-07 14:39:51 [INFO]: Temperatur gesendet: {"room":"Raum-2","temperature":22} an home/sensor/temperature/Raum-2
+2024-11-07 14:40:01 [INFO]: Temperatur gesendet: {"room":"Raum-2","temperature":26} an home/sensor/temperature/Raum-2
+2024-11-07 14:40:11 [INFO]: Temperatur gesendet: {"room":"Raum-1","temperature":8} an home/sensor/temperature/Raum-1
+2024-11-07 14:40:21 [INFO]: Temperatur gesendet: {"room":"Raum-3","temperature":20} an home/sensor/temperature/Raum-3
+2024-11-07 14:40:31 [INFO]: Temperatur gesendet: {"room":"Raum-1","temperature":4} an home/sensor/temperature/Raum-1
+2024-11-07 14:40:41 [INFO]: Temperatur gesendet: {"room":"Raum-3","temperature":19} an home/sensor/temperature/Raum-3
+2024-11-07 14:40:51 [INFO]: Temperatur gesendet: {"room":"Raum-2","temperature":19} an home/sensor/temperature/Raum-2
+2024-11-07 14:41:01 [INFO]: Temperatur gesendet: {"room":"Raum-2","temperature":0} an home/sensor/temperature/Raum-2
+2024-11-07 14:41:11 [INFO]: Temperatur gesendet: {"room":"Raum-5","temperature":18} an home/sensor/temperature/Raum-5
+2024-11-07 14:41:21 [INFO]: Temperatur gesendet: {"room":"Raum-1","temperature":12} an home/sensor/temperature/Raum-1
+2024-11-07 14:41:31 [INFO]: Temperatur gesendet: {"room":"Raum-5","temperature":9} an home/sensor/temperature/Raum-5

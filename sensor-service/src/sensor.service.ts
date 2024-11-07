@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as mqtt from 'mqtt';
 import { interval } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { logger } from './logger';
 
 @Injectable()
 export class SensorService {
@@ -14,12 +15,12 @@ export class SensorService {
     this.client = mqtt.connect(process.env.MQTT_BROKER_URL || 'mqtt://mqtt-broker:1883');
 
     this.client.on('connect', () => {
-      console.log(`Sensor ${this.sensorId} erfolgreich mit MQTT-Broker verbunden`);
+      logger.info(`Sensor ${this.sensorId} erfolgreich mit MQTT-Broker verbunden`);
       this.sendQueuedCommands();
     });
 
     this.client.on('error', (error) => {
-      console.error('Verbindung zum MQTT-Broker fehlgeschlagen:', error);
+      logger.error('Verbindung zum MQTT-Broker fehlgeschlagen:', error);
     });
   }
 
@@ -44,10 +45,10 @@ export class SensorService {
     } else {
       this.client.publish(topic, message, { qos: 1, retain: true }, (err) => {
         if (err) {
-          console.error('Fehler beim Senden der Temperatur:', err);
+          logger.error('Fehler beim Senden der Temperatur:', err);
           this.commandQueue.push({ topic, message });
         } else {
-          console.log(`Temperatur gesendet: ${message} an ${topic}`);
+          logger.info(`Temperatur gesendet: ${message} an ${topic}`);
         }
       });
     }
@@ -58,11 +59,11 @@ export class SensorService {
       const { topic, message } = this.commandQueue.shift()!;
       this.client.publish(topic, message, { qos: 1, retain: true }, (err) => {
         if (err) {
-          console.error(`Fehler beim Wiederholen der Nachricht:`, err);
+          logger.error(`Fehler beim Wiederholen der Nachricht:`, err);
           this.commandQueue.unshift({ topic, message });
           return;
         }
-        console.log(`Nachricht aus Warteschlange gesendet: ${message} an ${topic}`);
+        logger.info(`Nachricht aus Warteschlange gesendet: ${message} an ${topic}`);
       });
     }
   }

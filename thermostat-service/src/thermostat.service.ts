@@ -1,5 +1,6 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import * as mqtt from 'mqtt';
+import { logger } from './logger'
 
 @Injectable()
 export class ThermostatService implements OnModuleInit {
@@ -16,12 +17,12 @@ export class ThermostatService implements OnModuleInit {
     this.client = mqtt.connect(process.env.MQTT_BROKER_URL || 'mqtt://mqtt-broker:1883');
 
     this.client.on('connect', () => {
-      console.log(`Thermostat ${this.thermostatId} erfolgreich mit MQTT-Broker verbunden.`);
+      logger.info(`Thermostat ${this.thermostatId} erfolgreich mit MQTT-Broker verbunden.`);
       this.client.subscribe(`home/thermostat/control/+`, { qos: 1 }, (err) => {
         if (err) {
-          console.error(`Abonnement auf home/thermostat/control/+ fehlgeschlagen:`, err);
+          logger.error(`Abonnement auf home/thermostat/control/+ fehlgeschlagen:`, err);
         } else {
-          console.log(`Erfolgreich auf home/thermostat/control/+ abonniert.`);
+          logger.info(`Erfolgreich auf home/thermostat/control/+ abonniert.`);
         }
       });
       this.sendQueuedCommands();
@@ -34,8 +35,8 @@ export class ThermostatService implements OnModuleInit {
   }
 
   private applyHeatingCommand(room: string, command: string) {
-    console.log(`Empfange Steuerbefehl für ${room}: ${command}`);
-    console.log(
+    logger.info(`Empfange Steuerbefehl für ${room}: ${command}`);
+    logger.info(
       `Heizung in ${room} ${command === 'Heizung_ein' ? 'eingeschaltet' : 'ausgeschaltet'}.`
     );
   }
@@ -45,11 +46,11 @@ export class ThermostatService implements OnModuleInit {
       const { topic, message } = this.commandQueue.shift()!;
       this.client.publish(topic, message, { qos: 1, retain: true }, (err) => {
         if (err) {
-          console.error(`Fehler beim Wiederholen des Steuerbefehls:`, err);
+          logger.error(`Fehler beim Wiederholen des Steuerbefehls:`, err);
           this.commandQueue.unshift({ topic, message });
           return;
         }
-        console.log(`Steuerbefehl aus Warteschlange gesendet: ${message} an ${topic}`);
+        logger.info(`Steuerbefehl aus Warteschlange gesendet: ${message} an ${topic}`);
       });
     }
   }

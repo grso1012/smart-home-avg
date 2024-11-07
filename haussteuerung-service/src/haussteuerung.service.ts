@@ -1,5 +1,7 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import * as mqtt from 'mqtt';
+import { logger } from './logger';
+import { log } from 'winston';
 
 @Injectable()
 export class HaussteuerungService implements OnModuleInit {
@@ -14,14 +16,14 @@ export class HaussteuerungService implements OnModuleInit {
     this.client = mqtt.connect(process.env.MQTT_BROKER_URL || 'mqtt://mqtt-broker:1883');
 
     this.client.on('connect', () => {
-      console.log('Haussteuerung erfolgreich mit MQTT-Broker verbunden.');
+      logger.info('Haussteuerung erfolgreich mit MQTT-Broker verbunden.');
       this.leereWarteschlange();
 
       this.client.subscribe(`${this.sensorTopicPrefix}/+`, (err) => {
         if (err) {
-          console.error(`Fehler beim Abonnieren von ${this.sensorTopicPrefix}/+:`, err);
+          logger.error(`Fehler beim Abonnieren von ${this.sensorTopicPrefix}/+:`, err);
         } else {
-          console.log(`Abonniert auf ${this.sensorTopicPrefix}/+.`);
+          logger.info(`Abonniert auf ${this.sensorTopicPrefix}/+.`);
         }
       });
 
@@ -40,7 +42,7 @@ export class HaussteuerungService implements OnModuleInit {
   }
 
   private processTemperature(room: string, temperature: number) {
-    console.log(`Empfangene Temperatur für ${room}: ${temperature}°C`);
+    logger.info(`Empfangene Temperatur für ${room}: ${temperature}°C`);
 
     const targetTemperature = this.targetTemperatures[room] || 21;
     let command = 'Heizung_aus';
@@ -50,7 +52,7 @@ export class HaussteuerungService implements OnModuleInit {
     } else if (temperature > this.maxTemp) {
       command = 'Heizung_aus';
     } else {
-      console.log(`Temperatur in ${room} im optimalen Bereich.`);
+      logger.info(`Temperatur in ${room} im optimalen Bereich.`);
     }
 
     this.sendControlCommand(room, command, targetTemperature);
@@ -67,10 +69,10 @@ export class HaussteuerungService implements OnModuleInit {
 
     this.client.publish(topic, payload, { qos: 1, retain: true }, (err) => {
       if (err) {
-        console.error(`Fehler beim Senden des Steuerbefehls für ${room}:`, err);
+        logger.error(`Fehler beim Senden des Steuerbefehls für ${room}:`, err);
         this.commandQueue.push({ topic, message: payload });
       } else {
-        console.log(`Steuerbefehl an ${room} gesendet: ${command} bei ${targetTemperature}°C`);
+        logger.info(`Steuerbefehl an ${room} gesendet: ${command} bei ${targetTemperature}°C`);
       }
     });
   }
@@ -80,7 +82,7 @@ export class HaussteuerungService implements OnModuleInit {
       const { topic, message } = this.commandQueue.shift()!;
       this.client.publish(topic, message, { qos: 1, retain: true }, (err) => {
         if (err) {
-          console.error(`Fehler beim Wiederholen des Steuerbefehls:`, err);
+          logger.error(`Fehler beim Wiederholen des Steuerbefehls:`, err);
           this.commandQueue.unshift({ topic, message });
           return;
         }
@@ -89,21 +91,21 @@ export class HaussteuerungService implements OnModuleInit {
   }
 
   private leereWarteschlange() {
-    console.log('Überprüfe und sende Nachrichten in der Warteschlange...');
+    logger.info('Überprüfe und sende Nachrichten in der Warteschlange...');
 
     while (this.commandQueue.length > 0) {
       const command = this.commandQueue.shift();
       if (command) {
         this.client.publish(command.topic, command.message, { qos: 1, retain: true }, (err) => {
           if (err) {
-            console.error(
+            logger.error(
               `Fehler beim Senden aus der Warteschlange für Topic ${command.topic}:`,
               err
             );
 
             this.commandQueue.push(command);
           } else {
-            console.log(`Nachricht aus Warteschlange gesendet für Topic ${command.topic}`);
+            logger.info(`Nachricht aus Warteschlange gesendet für Topic ${command.topic}`);
           }
         });
       }

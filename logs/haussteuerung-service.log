@@ -1,0 +1,46 @@
+2024-11-07 14:39:02 [INFO]: Haussteuerung erfolgreich mit MQTT-Broker verbunden.
+2024-11-07 14:39:02 [INFO]: Überprüfe und sende Nachrichten in der Warteschlange...
+2024-11-07 14:39:02 [INFO]: Abonniert auf home/sensor/temperature/+.
+2024-11-07 14:39:21 [INFO]: Empfangene Temperatur für Raum-2: 4°C
+2024-11-07 14:39:21 [INFO]: Steuerbefehl an Raum-2 gesendet: Heizung_ein bei 21°C
+2024-11-07 14:39:31 [INFO]: Empfangene Temperatur für Raum-1: 21°C
+2024-11-07 14:39:31 [INFO]: Temperatur in Raum-1 im optimalen Bereich.
+2024-11-07 14:39:31 [INFO]: Steuerbefehl an Raum-1 gesendet: Heizung_aus bei 21°C
+2024-11-07 14:39:41 [INFO]: Empfangene Temperatur für Raum-4: 22°C
+2024-11-07 14:39:41 [INFO]: Temperatur in Raum-4 im optimalen Bereich.
+2024-11-07 14:39:41 [INFO]: Steuerbefehl an Raum-4 gesendet: Heizung_aus bei 21°C
+2024-11-07 14:39:51 [INFO]: Empfangene Temperatur für Raum-2: 22°C
+2024-11-07 14:39:51 [INFO]: Temperatur in Raum-2 im optimalen Bereich.
+2024-11-07 14:39:51 [INFO]: Steuerbefehl an Raum-2 gesendet: Heizung_aus bei 21°C
+2024-11-07 14:40:01 [INFO]: Empfangene Temperatur für Raum-2: 26°C
+2024-11-07 14:40:01 [INFO]: Steuerbefehl an Raum-2 gesendet: Heizung_aus bei 21°C
+2024-11-07 14:40:11 [INFO]: Empfangene Temperatur für Raum-1: 8°C
+2024-11-07 14:40:11 [INFO]: Steuerbefehl an Raum-1 gesendet: Heizung_ein bei 21°C
+2024-11-07 14:40:31 [INFO]: Haussteuerung erfolgreich mit MQTT-Broker verbunden.
+2024-11-07 14:40:31 [INFO]: Überprüfe und sende Nachrichten in der Warteschlange...
+2024-11-07 14:40:31 [INFO]: Abonniert auf home/sensor/temperature/+.
+2024-11-07 14:40:31 [INFO]: Empfangene Temperatur für Raum-2: 26°C
+2024-11-07 14:40:31 [INFO]: Empfangene Temperatur für Raum-1: 4°C
+2024-11-07 14:40:31 [INFO]: Empfangene Temperatur für Raum-4: 22°C
+2024-11-07 14:40:31 [INFO]: Temperatur in Raum-4 im optimalen Bereich.
+2024-11-07 14:40:31 [INFO]: Empfangene Temperatur für Raum-3: 20°C
+2024-11-07 14:40:31 [INFO]: Temperatur in Raum-3 im optimalen Bereich.
+2024-11-07 14:40:31 [INFO]: Steuerbefehl an Raum-2 gesendet: Heizung_aus bei 21°C
+2024-11-07 14:40:31 [INFO]: Steuerbefehl an Raum-1 gesendet: Heizung_ein bei 21°C
+2024-11-07 14:40:31 [INFO]: Steuerbefehl an Raum-4 gesendet: Heizung_aus bei 21°C
+2024-11-07 14:40:31 [INFO]: Steuerbefehl an Raum-3 gesendet: Heizung_aus bei 21°C
+2024-11-07 14:40:41 [INFO]: Empfangene Temperatur für Raum-3: 19°C
+2024-11-07 14:40:41 [INFO]: Temperatur in Raum-3 im optimalen Bereich.
+2024-11-07 14:40:41 [INFO]: Steuerbefehl an Raum-3 gesendet: Heizung_aus bei 21°C
+2024-11-07 14:40:51 [INFO]: Empfangene Temperatur für Raum-2: 19°C
+2024-11-07 14:40:51 [INFO]: Temperatur in Raum-2 im optimalen Bereich.
+2024-11-07 14:40:51 [INFO]: Steuerbefehl an Raum-2 gesendet: Heizung_aus bei 21°C
+2024-11-07 14:41:01 [INFO]: Empfangene Temperatur für Raum-2: 0°C
+2024-11-07 14:41:01 [INFO]: Steuerbefehl an Raum-2 gesendet: Heizung_ein bei 21°C
+2024-11-07 14:41:11 [INFO]: Empfangene Temperatur für Raum-5: 18°C
+2024-11-07 14:41:11 [INFO]: Temperatur in Raum-5 im optimalen Bereich.
+2024-11-07 14:41:11 [INFO]: Steuerbefehl an Raum-5 gesendet: Heizung_aus bei 21°C
+2024-11-07 14:41:21 [INFO]: Empfangene Temperatur für Raum-1: 12°C
+2024-11-07 14:41:21 [INFO]: Steuerbefehl an Raum-1 gesendet: Heizung_ein bei 21°C
+2024-11-07 14:41:31 [INFO]: Empfangene Temperatur für Raum-5: 9°C
+2024-11-07 14:41:31 [INFO]: Steuerbefehl an Raum-5 gesendet: Heizung_ein bei 21°C

@@ -10,9 +10,10 @@
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/microservices": "^8.0.0",
+    "mqtt": "^4.0.0",
+    "rxjs": "^7.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.0",
-    "mqtt": "^4.0.0",
-    "rxjs": "^7.0.0"
+    "winston": "^3.16.0"
   }
 }

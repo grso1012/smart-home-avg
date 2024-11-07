@@ -1,0 +1,48 @@
+2024-11-07 14:30:14 [INFO]: Thermostat thermostat-3283 erfolgreich mit MQTT-Broker verbunden.
+2024-11-07 14:30:14 [INFO]: Erfolgreich auf home/thermostat/control/+ abonniert.
+2024-11-07 14:30:29 [INFO]: Empfange Steuerbefehl für Raum-5: Heizung_ein
+2024-11-07 14:30:29 [INFO]: Heizung in Raum-5 eingeschaltet.
+2024-11-07 14:30:39 [INFO]: Empfange Steuerbefehl für Raum-4: Heizung_ein
+2024-11-07 14:30:39 [INFO]: Heizung in Raum-4 eingeschaltet.
+2024-11-07 14:30:49 [INFO]: Empfange Steuerbefehl für Raum-1: Heizung_ein
+2024-11-07 14:30:49 [INFO]: Heizung in Raum-1 eingeschaltet.
+2024-11-07 14:30:59 [INFO]: Empfange Steuerbefehl für Raum-4: Heizung_aus
+2024-11-07 14:30:59 [INFO]: Heizung in Raum-4 ausgeschaltet.
+2024-11-07 14:31:09 [INFO]: Empfange Steuerbefehl für Raum-4: Heizung_ein
+2024-11-07 14:31:09 [INFO]: Heizung in Raum-4 eingeschaltet.
+2024-11-07 14:31:19 [INFO]: Empfange Steuerbefehl für Raum-4: Heizung_ein
+2024-11-07 14:31:19 [INFO]: Heizung in Raum-4 eingeschaltet.
+2024-11-07 14:39:06 [INFO]: Thermostat thermostat-8568 erfolgreich mit MQTT-Broker verbunden.
+2024-11-07 14:39:06 [INFO]: Erfolgreich auf home/thermostat/control/+ abonniert.
+2024-11-07 14:39:21 [INFO]: Empfange Steuerbefehl für Raum-2: Heizung_ein
+2024-11-07 14:39:21 [INFO]: Heizung in Raum-2 eingeschaltet.
+2024-11-07 14:39:31 [INFO]: Empfange Steuerbefehl für Raum-1: Heizung_aus
+2024-11-07 14:39:31 [INFO]: Heizung in Raum-1 ausgeschaltet.
+2024-11-07 14:39:41 [INFO]: Empfange Steuerbefehl für Raum-4: Heizung_aus
+2024-11-07 14:39:41 [INFO]: Heizung in Raum-4 ausgeschaltet.
+2024-11-07 14:39:51 [INFO]: Empfange Steuerbefehl für Raum-2: Heizung_aus
+2024-11-07 14:39:51 [INFO]: Heizung in Raum-2 ausgeschaltet.
+2024-11-07 14:40:01 [INFO]: Empfange Steuerbefehl für Raum-2: Heizung_aus
+2024-11-07 14:40:01 [INFO]: Heizung in Raum-2 ausgeschaltet.
+2024-11-07 14:40:11 [INFO]: Empfange Steuerbefehl für Raum-1: Heizung_ein
+2024-11-07 14:40:11 [INFO]: Heizung in Raum-1 eingeschaltet.
+2024-11-07 14:40:31 [INFO]: Empfange Steuerbefehl für Raum-2: Heizung_aus
+2024-11-07 14:40:31 [INFO]: Heizung in Raum-2 ausgeschaltet.
+2024-11-07 14:40:31 [INFO]: Empfange Steuerbefehl für Raum-1: Heizung_ein
+2024-11-07 14:40:31 [INFO]: Heizung in Raum-1 eingeschaltet.
+2024-11-07 14:40:31 [INFO]: Empfange Steuerbefehl für Raum-4: Heizung_aus
+2024-11-07 14:40:31 [INFO]: Heizung in Raum-4 ausgeschaltet.
+2024-11-07 14:40:31 [INFO]: Empfange Steuerbefehl für Raum-3: Heizung_aus
+2024-11-07 14:40:31 [INFO]: Heizung in Raum-3 ausgeschaltet.
+2024-11-07 14:40:41 [INFO]: Empfange Steuerbefehl für Raum-3: Heizung_aus
+2024-11-07 14:40:41 [INFO]: Heizung in Raum-3 ausgeschaltet.
+2024-11-07 14:40:51 [INFO]: Empfange Steuerbefehl für Raum-2: Heizung_aus
+2024-11-07 14:40:51 [INFO]: Heizung in Raum-2 ausgeschaltet.
+2024-11-07 14:41:01 [INFO]: Empfange Steuerbefehl für Raum-2: Heizung_ein
+2024-11-07 14:41:01 [INFO]: Heizung in Raum-2 eingeschaltet.
+2024-11-07 14:41:11 [INFO]: Empfange Steuerbefehl für Raum-5: Heizung_aus
+2024-11-07 14:41:11 [INFO]: Heizung in Raum-5 ausgeschaltet.
+2024-11-07 14:41:21 [INFO]: Empfange Steuerbefehl für Raum-1: Heizung_ein
+2024-11-07 14:41:21 [INFO]: Heizung in Raum-1 eingeschaltet.
+2024-11-07 14:41:31 [INFO]: Empfange Steuerbefehl für Raum-5: Heizung_ein
+2024-11-07 14:41:31 [INFO]: Heizung in Raum-5 eingeschaltet.
