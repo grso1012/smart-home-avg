@@ -29,7 +29,7 @@ export class SensorService {
       .pipe(
         map(() => ({
           room: `Raum-${Math.floor(Math.random() * 5) + 1}`,
-          temperature: Math.floor(Math.random() * 30),
+          temperature: this.generateTemperature(20,7) // Zufällige Temperatur mit Mittelwert 20 und Standardabweichung 7
         }))
       )
       .subscribe((data) => {
@@ -66,5 +66,22 @@ export class SensorService {
         logger.info(`Nachricht aus Warteschlange gesendet: ${message} an ${topic}`);
       });
     }
+  }
+
+  generateTemperature(mittelwert: number, standardabweichung: number): number {
+    if (mittelwert === undefined || standardabweichung === undefined) {
+      throw new Error("ungültiger Funktionsaufruf generateTemperature");
+    }
+    // Die Temperaturwerte sind normalverteilt, benutzt wird die Box-Muller-Methode.
+    //Quelle: https://de.wikipedia.org/wiki/Box-Muller-Methode
+    const u = Math.random();
+    const v = Math.random();
+    
+    // Erstellung Z Score
+    const zWert = Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+    // Transformation vom Z Score
+    const temp = Math.round(mittelwert + zWert * standardabweichung);
+
+    return temp;
   }
 }
